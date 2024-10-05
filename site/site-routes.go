@@ -8,6 +8,5 @@ import (
 func SetupRoutes(r *chi.Mux) {
 
 	// Public Routes
-	r.Get("/", home.Handle)
-	r.Get("/random-number", home.HandleRandNum)
+	r.Route("/", home.SetupRoutes)
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,6 +13,9 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/joho/godotenv"
 )
+
+//go:embed public
+var FS embed.FS
 
 func main() {
 	if err := run(); err != nil {
@@ -51,7 +55,10 @@ func setupMiddleware(r *chi.Mux) {
 
 func setupFileServer(r *chi.Mux) {
 	fileServer := http.FileServer(http.Dir("./static"))
+	// serving static folder
 	r.Handle("/static/*", http.StripPrefix("/static", fileServer))
+	// serving public folder
+	r.Handle("/public/*", http.StripPrefix("/", http.FileServer(http.FS(FS))))
 }
 
 func setupPort() string {

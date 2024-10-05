@@ -1,7 +1,34 @@
 package home_html
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/enricomilli/portfolio/site/assets"
+)
+
+templ RandomNumberComponent() {
+	<div class="mx-auto w-fit p-8 pt-12 rounded-2xl shadow-lg flex flex-col justify-center items-center gap-5 border border-solid ">
+		<h2 class="text-2xl font-semibold">Random Number Generator</h2>
+		<div data-on-load="$$get('/random-number')" id="random-number"></div>
+		@GenerateRandomNumberBtn()
+	</div>
+}
+
+templ GenerateRandomNumberBtn() {
+	<div class="flex flex-col gap-2 flex-nowrap items-center">
+		<button
+			data-on-click="$$get('/random-number')"
+			data-fetch-indicator="('#random-number-loader')"
+			data-bind-disabled="$$isFetching('#random-number-loader')"
+			class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+		>
+			Get Random Number
+		</button>
+		<div id="random-number-loader">
+			@assets.Spinner("20")
+		</div>
+	</div>
+}
 
 templ RandomNumber(randInt int) {
-	<div id="random-number">{ fmt.Sprintf("%v", randInt) }</div>
+	<div id="random-number" class="text-5xl font-semibold">{ fmt.Sprintf("%v", randInt) }</div>
 }

@@ -7,7 +7,7 @@ import (
 )
 
 // Handles initial page load
-func Handle(w http.ResponseWriter, r *http.Request) {
+func HandleIndexPage(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
 
