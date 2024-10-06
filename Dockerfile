@@ -8,19 +8,21 @@ RUN apk add --no-cache git nodejs npm ca-certificates
 # Install templ
 RUN go install github.com/a-h/templ/cmd/templ@latest
 
-# Install tailwindcss globally
-RUN npm install -g tailwindcss
+# # Install tailwindcss globally
+# RUN npm install -g tailwindcss webpack
 
-COPY go.mod go.sum ./
+COPY go.mod go.sum package.json ./
 
 COPY . .
 
 # Download Go dependencies
 RUN go mod tidy
 
+# install node dependecies
+RUN npm install 
 
-# Generate CSS
-RUN tailwindcss -i site/assets/tailwind.css -o static/css/tailwind.css
+# build js bundle
+RUN npm run build
 
 # Generate templ files
 RUN TEMPL_EXPERIMENT=rawgo templ generate

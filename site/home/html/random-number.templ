@@ -30,5 +30,9 @@ templ GenerateRandomNumberBtn() {
 }
 
 templ RandomNumber(randInt int) {
-	<div id="random-number" class="text-5xl font-semibold">{ fmt.Sprintf("%v", randInt) }</div>
+	<div
+		id="random-number"
+		class="text-5xl font-semibold"
+		data-on-load="animations.RandNum()"
+	>{ fmt.Sprintf("%v", randInt) }</div>
 }
