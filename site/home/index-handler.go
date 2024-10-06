@@ -7,9 +7,10 @@ import (
 )
 
 // Handles initial page load
-func HandleIndexPage(w http.ResponseWriter, r *http.Request) {
+func HandleIndex(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
 
 	home_html.Page().Render(ctx, w)
+
 }

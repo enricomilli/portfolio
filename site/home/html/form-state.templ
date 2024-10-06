@@ -35,7 +35,7 @@ templ FormStateComponent() {
 			<input
 				id="firstNameInput"
 				data-model="firstName"
-				data-on-input="$$put('/form-state')"
+				data-on-input.debounce_300ms="$$put('/form-state')"
 				type="text"
 				class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
 			/>
@@ -44,7 +44,7 @@ templ FormStateComponent() {
 			<label class="text-gray-700 dark:text-gray-200" for="lastNameInput">Last Name</label>
 			<input
 				id="lastNameInput"
-				data-on-input="$$put('/form-state')"
+				data-on-input.debounce_300ms="$$put('/form-state')"
 				data-model="lastName"
 				type="text"
 				class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -53,6 +53,7 @@ templ FormStateComponent() {
 	</div>
 }
 
+// delay the form submission data-on-keydown.debounce_500ms
 templ FormStateServerResponse(firstName, lastName string) {
 	<div id="output">
 		<div class="max-w-xl text-wrap">

@@ -1,0 +1,13 @@
+package home_html
+
+templ Searched(searchedFor string) {
+	<div id="main" class="min-h-screen min-w-screen p-10 pt-24 flex flex-col gap-10 dark:text-white">
+		<h2 class="mt-20 md:mt-0 mx-auto text-2xl font-semibold">Searched for: { searchedFor }</h2>
+		<div class="h-full w-full flex flex-col items-center justify-center gap-5">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wand-sparkles"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path><path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path></svg>
+			<div class="font-semibold text-lg">
+				There is nothing to search for yet
+			</div>
+		</div>
+	</div>
+}
