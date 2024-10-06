@@ -5,13 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/enricomilli/portfolio/site"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/joho/godotenv"
+	"github.com/go-chi/httprate"
 )
 
 //go:embed public
@@ -27,10 +26,10 @@ func run() error {
 
 	r := chi.NewRouter()
 
-	err := setupEnv()
-	if err != nil {
-		return fmt.Errorf("failed to initialize environment: %w", err)
-	}
+	// err := setupEnv()
+	// if err != nil {
+	// 	return fmt.Errorf("failed to initialize environment: %w", err)
+	// }
 
 	setupMiddleware(r)
 
@@ -51,6 +50,14 @@ func setupMiddleware(r *chi.Mux) {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Timeout(60 * time.Second))
+	r.Use(httprate.Limit(
+		1000,
+		30*time.Second,
+		httprate.WithKeyFuncs(httprate.KeyByIP, httprate.KeyByEndpoint),
+		httprate.WithLimitHandler(func(w http.ResponseWriter, r *http.Request) {
+			http.Error(w, `{"error": "Rate limited. Please slow down."}`, http.StatusTooManyRequests)
+		}),
+	))
 }
 
 func setupFileServer(r *chi.Mux) {
@@ -62,18 +69,19 @@ func setupFileServer(r *chi.Mux) {
 }
 
 func setupPort() string {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
+	// port := os.Getenv("PORT")
+	// if port == "" {
+	// 	port = "8080"
+	// }
+	port := "8080"
 	return ":" + port
 }
 
-func setupEnv() error {
-	if os.Getenv("K_SERVICE") == "" {
-		if err := godotenv.Load(); err != nil {
-			return fmt.Errorf("failed to load .env file: %w", err)
-		}
-	}
-	return nil
-}
+// func setupEnv() error {
+// 	if os.Getenv("K_SERVICE") == "" {
+// 		if err := godotenv.Load(); err != nil {
+// 			return fmt.Errorf("failed to load .env file: %w", err)
+// 		}
+// 	}
+// 	return nil
+// }

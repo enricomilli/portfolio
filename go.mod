@@ -9,10 +9,11 @@ require github.com/go-chi/chi/v5 v5.1.0
 require (
 	github.com/a-h/templ v0.2.778
 	github.com/delaneyj/datastar v0.18.9
-	github.com/joho/godotenv v1.5.1
+	github.com/go-chi/httprate v0.14.1
 )
 
 require (
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/delaneyj/gostar v0.7.3 // indirect
 	github.com/go-sanitize/sanitize v1.1.0 // indirect
 	github.com/goccy/go-json v0.10.3 // indirect

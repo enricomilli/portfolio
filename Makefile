@@ -1,3 +1,10 @@
+install:
+	@go install github.com/a-h/templ/cmd/templ@latest
+	@go mod tidy
+	@go mod download
+	@npm install -g tailwindcss
+
+
 
 dev:
 	@$(MAKE) css
@@ -5,7 +12,7 @@ dev:
 	@go run .
 
 css: 
-	@tailwindcss -i site/assets/styles.css -o static/css/styles.css
+	@tailwindcss -i site/assets/tailwind.css -o static/css/tailwind.css
 
 templ:
 	@TEMPL_EXPERIMENT=rawgo templ generate
