@@ -8,7 +8,7 @@ package home_html
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Searched(searchedFor string) templ.Component {
+func SearchPage(searchedFor string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +29,7 @@ func Searched(searchedFor string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"main\" class=\"min-h-screen min-w-screen p-10 pt-24 flex flex-col gap-10 dark:text-white\"><h2 class=\"mt-20 md:mt-0 mx-auto text-2xl font-semibold\">Searched for: ")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"main\" class=\"z-10 min-h-screen min-w-screen p-10 pt-24 flex flex-col gap-10 dark:text-white\"><h2 class=\"mt-20 md:mt-0 mx-auto text-2xl font-semibold\">Searched for: ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

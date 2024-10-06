@@ -34,7 +34,7 @@ func RandomNumberComponent() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"relative w-fit mx-auto\"><span class=\"absolute inset-0 bottom-2 right-2 border-2 border-dashed border-black dark:border-white\"></span><div class=\"mx-auto w-fit p-8 pt-12 shadow-lg flex flex-col justify-center items-center gap-5 border-2 border-solid dark:border-white border-black\"><h2 class=\"text-2xl font-semibold\">Random Number Generator</h2><div data-on-load=\"$$get(&#39;/random-number&#39;)\" id=\"random-number\"></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"relative w-fit mx-auto z-10\"><span class=\"absolute inset-0 bottom-2 right-2 border-2 border-dashed border-black dark:border-white\"></span><div class=\"mx-auto w-fit p-12 pb-14 shadow-lg flex flex-col justify-center items-center gap-5 border-2 border-solid dark:border-white border-black\"><div class=\"flex flex-col gap-1 justify-center items-center\"><h2 class=\"text-2xl font-semibold\">Random Number Generator</h2><p class=\"mt-3 text-gray-600 dark:text-gray-400\">A Hypermedia powered RNG.</p></div><div data-on-load=\"$$get(&#39;/random-number&#39;)\" id=\"random-number\"></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -71,7 +71,7 @@ func GenerateRandomNumberBtn() templ.Component {
 			templ_7745c5c3_Var2 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col gap-2 flex-nowrap items-center\"><button data-on-click=\"$$get(&#39;/random-number&#39;)\" data-fetch-indicator=\"(&#39;#random-number-loader&#39;)\" data-bind-disabled=\"$$isFetching(&#39;#random-number-loader&#39;)\" class=\"px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80\">Get Random Number</button><div id=\"random-number-loader\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col gap-2 flex-nowrap items-center\"><button data-on-click=\"$$get(&#39;/random-number&#39;)\" data-fetch-indicator=\"(&#39;#random-number-loader&#39;)\" data-bind-disabled=\"$$isFetching(&#39;#random-number-loader&#39;)\" class=\"relative px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80\">Get Random Number<div class=\"absolute inset-0 flex items-center justify-center\" id=\"random-number-loader\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -79,7 +79,7 @@ func GenerateRandomNumberBtn() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></button></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -115,7 +115,7 @@ func RandomNumber(randInt int) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%v", randInt))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/home/html/random-number.templ`, Line: 40, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/home/html/random-number.templ`, Line: 43, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {

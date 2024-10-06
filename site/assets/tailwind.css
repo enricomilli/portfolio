@@ -40,3 +40,33 @@ body {
         font-family: 'space-mono', monospace;
     }
 }
+
+#hero-section {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-shape {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.square {
+    border-radius: 4px;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid;
+    background-color: transparent !important;
+}

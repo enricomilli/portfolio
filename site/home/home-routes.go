@@ -12,7 +12,6 @@ func SetupRoutes(indexRouter chi.Router) {
 
 	// component routes
 	indexRouter.Get("/random-number", HandleRandNum)
-
 	indexRouter.Put("/form-state", HandleFormStatePut)
 
 }
