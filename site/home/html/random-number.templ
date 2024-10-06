@@ -6,10 +6,13 @@ import (
 )
 
 templ RandomNumberComponent() {
-	<div class="mx-auto w-fit p-8 pt-12 rounded-2xl shadow-lg flex flex-col justify-center items-center gap-5 border border-solid ">
-		<h2 class="text-2xl font-semibold">Random Number Generator</h2>
-		<div data-on-load="$$get('/random-number')" id="random-number"></div>
-		@GenerateRandomNumberBtn()
+	<div class="relative w-fit mx-auto">
+		<span class="absolute inset-0 bottom-2 right-2 border-2 border-dashed border-black dark:border-white"></span>
+		<div class="mx-auto w-fit p-8 pt-12 shadow-lg flex flex-col justify-center items-center gap-5 border-2 border-solid dark:border-white border-black">
+			<h2 class="text-2xl font-semibold">Random Number Generator</h2>
+			<div data-on-load="$$get('/random-number')" id="random-number"></div>
+			@GenerateRandomNumberBtn()
+		</div>
 	</div>
 }
 

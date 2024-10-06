@@ -34,7 +34,7 @@ func RandomNumberComponent() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"mx-auto w-fit p-8 pt-12 rounded-2xl shadow-lg flex flex-col justify-center items-center gap-5 border border-solid \"><h2 class=\"text-2xl font-semibold\">Random Number Generator</h2><div data-on-load=\"$$get(&#39;/random-number&#39;)\" id=\"random-number\"></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"relative w-fit mx-auto\"><span class=\"absolute inset-0 bottom-2 right-2 border-2 border-dashed border-black dark:border-white\"></span><div class=\"mx-auto w-fit p-8 pt-12 shadow-lg flex flex-col justify-center items-center gap-5 border-2 border-solid dark:border-white border-black\"><h2 class=\"text-2xl font-semibold\">Random Number Generator</h2><div data-on-load=\"$$get(&#39;/random-number&#39;)\" id=\"random-number\"></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -42,7 +42,7 @@ func RandomNumberComponent() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -115,7 +115,7 @@ func RandomNumber(randInt int) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%v", randInt))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/home/html/random-number.templ`, Line: 37, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/home/html/random-number.templ`, Line: 40, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
