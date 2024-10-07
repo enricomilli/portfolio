@@ -34,7 +34,7 @@ func RandomNumberComponent() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"relative w-fit mx-auto z-10\"><span class=\"absolute inset-0 bottom-2 right-2 border-2 border-dashed border-black dark:border-white\"></span><div class=\"mx-auto w-fit p-12 pb-14 shadow-lg flex flex-col justify-center items-center gap-5 border-2 border-solid dark:border-white border-black\"><div class=\"flex flex-col gap-1 justify-center items-center\"><h2 class=\"text-2xl font-semibold\">Random Number Generator</h2><p class=\"mt-3 text-gray-600 dark:text-gray-400\">A Hypermedia powered RNG.</p></div><div data-on-load=\"$$get(&#39;/random-number&#39;)\" id=\"random-number\"></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"relative w-fit mx-auto z-10\"><span class=\"absolute inset-0 bottom-2 right-2 border-2 border-dashed border-black dark:border-white\"></span><div class=\"mx-auto w-fit p-12 pb-16 shadow-lg flex flex-col justify-center items-center gap-5 border-2 border-solid dark:border-white border-black\"><div class=\"flex flex-col gap-1 justify-center items-center text-center\"><h2 class=\"text-2xl font-semibold\">Random Number Generator</h2><p class=\"mt-3 text-gray-600 dark:text-gray-400\">A Hypermedia powered RNG.</p></div><div data-on-load=\"$$get(&#39;/random-number&#39;)\" id=\"random-number\"></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
