@@ -8,24 +8,21 @@ RUN apk add --no-cache git nodejs npm ca-certificates
 # Install templ
 RUN go install github.com/a-h/templ/cmd/templ@latest
 
-# # Install tailwindcss globally
-# RUN npm install -g tailwindcss webpack
-
 COPY go.mod go.sum package.json ./
 
 COPY . .
+
+# Generate templ files
+RUN TEMPL_EXPERIMENT=rawgo templ generate
 
 # Download Go dependencies
 RUN go mod tidy
 
 # install node dependecies
-RUN npm install 
+RUN npm install
 
 # build js bundle
 RUN npm run build
-
-# Generate templ files
-RUN TEMPL_EXPERIMENT=rawgo templ generate
 
 # Build the Go application
 RUN go build -o ./bin/portfolio
