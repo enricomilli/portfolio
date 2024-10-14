@@ -6,23 +6,17 @@ import (
 )
 
 templ RandomNumberComponent() {
-	<div class="relative w-fit mx-auto z-10">
-		<span class="absolute inset-0 bottom-2 right-2 border-2 border-dashed border-black dark:border-white"></span>
-		<div class="mx-auto w-fit p-12 pb-16 shadow-lg flex flex-col justify-center items-center gap-5 border-2 border-solid dark:border-white border-black">
-			<div class="flex flex-col gap-1 justify-center items-center text-center">
-				<h2 class="text-2xl font-semibold">Random Number Generator</h2>
-				<p class="mt-3 text-gray-600 dark:text-gray-400">A Hypermedia powered RNG.</p>
-			</div>
-			<div data-on-load="$$get('/random-number')" id="random-number"></div>
-			@GenerateRandomNumberBtn()
-		</div>
+	<div data-store="{lowRange: 0, highRange: 100}" class="w-fit mx-auto flex flex-col flex-nowrap gap-4 z-10 p-10 shadow-lg border-2 border-dashed">
+		@randomNumberTitle()
+		<div data-on-load="$$post('/random-number/new')" id="random-number"></div>
+		@GenerateNumsWorkspace()
 	</div>
 }
 
 templ GenerateRandomNumberBtn() {
 	<div class="flex flex-col gap-2 flex-nowrap items-center">
 		<button
-			data-on-click="$$get('/random-number')"
+			data-on-click="$$post('/random-number/new')"
 			data-fetch-indicator="('#random-number-loader')"
 			data-bind-disabled="$$isFetching('#random-number-loader')"
 			class="relative px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
@@ -35,10 +29,67 @@ templ GenerateRandomNumberBtn() {
 	</div>
 }
 
-templ RandomNumber(randInt int) {
+templ randomNumberTitle() {
+	<div class="flex flex-col gap-1 justify-center items-center text-center">
+		<h2 class="text-2xl font-semibold">Random Number Generator</h2>
+		<p class="mt-3 text-gray-600 dark:text-gray-400">A Hypermedia powered RNG.</p>
+	</div>
+}
+
+templ NewRandomNumber(randInt, lowRange, highRange int) {
 	<div
 		id="random-number"
-		class="text-5xl font-semibold"
-		data-on-load="animations.RandNum()"
-	>{ fmt.Sprintf("%v", randInt) }</div>
+		class="flex flex-col flex-nowrap gap-2 items-center justify-center"
+	>
+		<div
+			id="new-rand-num"
+			class="w-fit text-5xl font-semibold my-5"
+			data-on-load="animations.RandNum('new-rand-num')"
+		>{ fmt.Sprintf("%v", randInt) }</div>
+		<div>
+			{ fmt.Sprintf("Low: %v, High: %v", lowRange, highRange) }
+		</div>
+	</div>
+}
+
+templ GenerateNumsWorkspace() {
+	<div id="random-number-workspace" class="flex flex-col flex-nowrap gap-2">
+		@GenerateRandomNumberBtn()
+		@EditRangeBtn()
+	</div>
+}
+
+templ EditRangeWorkspace() {
+	<div id="random-number-workspace" class="flex flex-col flex-nowrap gap-2">
+		<input
+			id="lowRangeInput"
+			data-model="lowRange"
+			type="text"
+			class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+		/>
+		<input
+			id="highRangeInput"
+			data-model="highRange"
+			type="text"
+			class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+		/>
+		<button
+			data-on-click="$$put('/random-number/edit'); $$post('/random-number/new')"
+			class="relative px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+		>
+			Use New Range
+		</button>
+	</div>
+}
+
+// get random-number/edit
+templ EditRangeBtn() {
+	<div class="flex flex-col gap-2 flex-nowrap items-center">
+		<button
+			data-on-click="$$get('/random-number/edit')"
+			class="relative px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+		>
+			Edit Range
+		</button>
+	</div>
 }
