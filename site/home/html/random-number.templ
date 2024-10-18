@@ -6,7 +6,11 @@ import (
 )
 
 templ RandomNumberComponent() {
-	<div data-store="{lowRange: 0, highRange: 100}" class="w-fit mx-auto flex flex-col flex-nowrap gap-4 z-10 p-10 shadow-lg border-2 border-dashed">
+	<div
+		id="random-num-component"
+		data-store="{lowRange: 0, highRange: 100}"
+		class="w-fit mx-auto flex flex-col flex-nowrap gap-4 z-10 p-10 shadow-lg border-2 border-dashed"
+	>
 		@randomNumberTitle()
 		<div data-on-load="$$post('/random-number/new')" id="random-number"></div>
 		@GenerateNumsWorkspace()

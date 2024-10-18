@@ -1,7 +1,8 @@
 import { animate } from "motion";
 
-function animateBg() {
-    const mainBody = document.getElementById('main')
+function animateBg(id) {
+    const mainBody = document.getElementById(id)
+    console.log("called on", id)
     const shapes = ['circle', 'square', 'triangle'];
     const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A'];
 
