@@ -3,6 +3,7 @@ package home_html
 import (
 	"fmt"
 	"github.com/enricomilli/portfolio/site/assets"
+	"math/rand"
 )
 
 templ RandomNumberComponent() {
@@ -12,7 +13,7 @@ templ RandomNumberComponent() {
 		class="w-fit mx-auto flex flex-col flex-nowrap gap-4 z-10 p-10 shadow-lg border-2 border-dashed"
 	>
 		@randomNumberTitle()
-		<div data-on-load="$$post('/random-number/new')" id="random-number"></div>
+		@NewRandomNumber(rand.Intn(100), 0, 100)
 		@GenerateNumsWorkspace()
 	</div>
 }

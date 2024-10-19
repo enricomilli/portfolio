@@ -2,15 +2,14 @@ import { animate } from "motion";
 
 function animateBg(id) {
     const mainBody = document.getElementById(id)
-    console.log("called on", id)
     const shapes = ['circle', 'square', 'triangle'];
     const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A'];
 
     for (let i = 0; i < 30; i++) {
         const shape = document.createElement('div');
         shape.className = `floating-shape ${shapes[Math.floor(Math.random() * shapes.length)]}`;
-        shape.style.left = `${Math.random() * 100}%`;
-        shape.style.top = `${Math.random() * 100}%`;
+        shape.style.left = `${Math.random() * 99}%`;
+        shape.style.top = `${Math.random() * 99}%`;
         shape.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
         shape.style.borderWidth = "2px"
         mainBody.appendChild(shape);
@@ -20,8 +19,8 @@ function animateBg(id) {
 }
 
 function animateShape(shape) {
-    const randomX = () => `${(Math.random() - 0.5) * 300}%`;
-    const randomY = () => `${(Math.random() + 0.5) * 300}%`;
+    const randomX = () => `${(Math.random() - 0.5) * 100}%`;
+    const randomY = () => `${(Math.random() + 0.8) * 100}%`;
     const randomRotate = () => Math.random() * 720 - 360;
     const randomScale = () => 0.2 + Math.random() * 0.5;
 
