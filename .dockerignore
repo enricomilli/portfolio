@@ -6,11 +6,3 @@ tmp
 bin
 node_modules
 static
-
-
-# flyctl launch added from node_modules/.deno/tailwindcss@3.4.1/node_modules/tailwindcss/stubs/.gitignore
-!node_modules/.deno/tailwindcss@3.4.1/node_modules/tailwindcss/stubs/**/*
-
-# flyctl launch added from node_modules/.pnpm/tailwindcss@3.4.13/node_modules/tailwindcss/stubs/.gitignore
-!node_modules/.pnpm/tailwindcss@3.4.13/node_modules/tailwindcss/stubs/**/*
-fly.toml

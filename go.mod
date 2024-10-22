@@ -10,6 +10,7 @@ require (
 	github.com/a-h/templ v0.2.778
 	github.com/delaneyj/datastar v0.18.9
 	github.com/go-chi/httprate v0.14.1
+	github.com/joho/godotenv v1.5.1
 )
 
 require (

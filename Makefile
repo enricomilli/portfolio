@@ -5,7 +5,6 @@ install:
 	@npm install -g tailwindcss
 
 
-
 dev:
 	@$(MAKE) css
 	@$(MAKE) templ
