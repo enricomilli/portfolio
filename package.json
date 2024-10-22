@@ -1,6 +1,8 @@
 {
 	"scripts": {
-	    "build": "webpack && tailwindcss -i site/assets/tailwind.css -o ./static/css/tailwind.css"
+	    "build": "npm run bundle && npm run css",
+		"bundle": "webpack",
+		"css": "tailwindcss -i site/assets/tailwind.css -o ./static/css/tailwind.css --minify"
 	},
 	"devDependencies": {
 		"glob": "^11.0.0",
